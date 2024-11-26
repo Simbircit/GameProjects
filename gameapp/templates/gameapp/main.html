@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gameapp/style.css' %}">
+    <title>GameProjects</title>
+</head>
+<body>
+    <header>
+        <a href="/" class="header_text">
+            <div class="header_box_logo">
+                <img src="{%static 'gameapp/images/logog.png'%}" alt="" class="logo">
+                <h1 class='header_text'>Game<span>Projects</span></h1>
+            </div>
+        </a>
+        {% if user.is_authenticated %}
+        <div class="header_box">
+            <a class="header_leaks" href="{%url 'add_game'%}">ADD GAME</a>
+            <a class="header_box_leaks" href="{%url 'profile'%}">
+                <h2 class="header_leaks">{{ user.username }}</h2>
+                <img src="{{ user.profile.avatar.url }}" alt="" class="avatar">
+            </a>
+            <a class="header_leaks" href="{%url 'logout'%}">EXIT</a>
+        </div>
+        {%else%}
+        <div class="header_box">
+            <a class="header_leaks" href="{%url 'login'%}">Войти</a>
+            <a class="header_leaks" href="{%url 'register'%}">Зарегистрироваться</a>
+        </div>
+        {%endif%}
+    </header>
+    <main>
+        <section class="games_section">
+            <h1 class="main_text">GAMES</h1>
+            <section class="games">
+                {%for game in games%}
+                <a href="{%url 'game' game.id%}">
+                    <section class="game">
+                        <img src="{{game.image.url}}" alt="" class="game_image">
+                        <div class="game_avatar_text_box">
+                            <img src="{{game.user.profile.avatar.url}}" alt="" class="game_avatar">
+                            <div class="game_text_box">
+                                <h3 class="game_author">{{game.user}}</h3>
+                                <h2 class="game_name">{{game.name}}</h2>
+                            </div>
+                        </div>
+                    </section>
+                </a>
+                {%endfor%}
+            </section>
+        </section>
+        <section class="filters">
+            <h2>Filters</h2>
+            <section class="filters2">
+                {%for genre in genres%}
+                <a href="/{{genre.name}}" class="filter_text">{{genre.name}}</a>
+                {%endfor%}
+            </section>
+        </section>
+    </main>
+</body>
+</html>

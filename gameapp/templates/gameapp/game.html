@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gameapp/style.css' %}">
+    <title>GameProjects</title>
+</head>
+<body>
+    <header>
+        <a href="/" class="header_text">
+            <div class="header_box_logo">
+                <img src="{%static 'gameapp/images/logog.png'%}" alt="" class="logo">
+                <h1 class='header_text'>Game<span>Projects</span></h1>
+            </div>
+        </a>
+        {% if user.is_authenticated %}
+        <div class="header_box">
+            <a class="header_leaks" href="{%url 'add_game'%}">ADD GAME</a>
+            <a class="header_box_leaks" href="{%url 'profile'%}">
+                <h2 class="header_leaks">{{ user.username }}</h2>
+                <img src="{{ user.profile.avatar.url }}" alt="" class="avatar">
+            </a>
+            <a class="header_leaks" href="{%url 'logout'%}">EXIT</a>
+        </div>
+        {%else%}
+        <div class="header_box">
+            <a class="header_leaks" href="{%url 'login'%}">Войти</a>
+            <a class="header_leaks" href="{%url 'register'%}">Зарегистрироваться</a>
+        </div>
+        {%endif%}
+    </header>
+    <main class="form_section">
+        <div class="slider_box">
+            <button class="prev-button">
+                <img src="{%static 'gameapp/images/arrow.png'%}" alt="" class="arrow_left">
+            </button>
+            <section class="slider">
+                <img src="{{game.image.url}}" alt="" class="slider_img">
+                {%for image in game_img%}
+                <div class="slider_img">
+                    <img src="{{image.image.url}}" alt="" class="slider_img2">
+                    {% if user.is_authenticated and user == game.user%}
+                    <a href="{% url 'delete_image' image.id%}">
+                        <img src="{%static 'gameapp/images/x.png'%}" alt="" class="delete">
+                    </a>
+                    {%endif%}
+                </div>
+                {%endfor%}
+            </section>
+            <button class="next-button">
+                <img src="{%static 'gameapp/images/arrow.png'%}" alt="" class="arrow_right">
+            </button>
+        </div>
+        <h1 class="main_text">{{game.name}}</h1>
+        <div class="game_info_box">
+            <div class="game_info_user">
+                <img src="{{game.user.profile.avatar.url}}" alt="" class="game_avatar">
+                <h2 class="game_user_name">{{game.user}}</h2>
+            </div>
+            <p class="game_description">{{game.description}}</p>
+        </div>
+        <section class="game_info_box">
+            {%for file in game_files%}
+            <div class="file_box">
+                <img src="{%static 'gameapp/images/fileico.png'%}" alt="" class="file_icon">
+                <a href="{{file.file.url}}" class="file_text">{{file.file}}</a>
+                {% if user.is_authenticated and user == game.user%}
+                <a href="{% url 'delete_file' file.id%}">
+                    <img src="{%static 'gameapp/images/x.png'%}" alt="" class="file_icon">
+                </a>
+                {%endif%}
+            </div>
+            {%endfor%}
+            {% if user.is_authenticated and user == game.user%}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token%}
+                {{ images_form.as_p}}
+                <button type="submit" value="send">AddImage</button>
+            </form>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token%}
+                {{ files_form.as_p}}
+                <button type="submit" value="send">AddFile</button>
+            </form>
+            {%endif%}
+        </section>
+    </main>
+    <footer>
+        <section class="game_info_box">
+            {% if user.is_authenticated%}
+            <form method="post" enctype="multipart/form-data" class="comment_form">
+                {% csrf_token%}
+                {{ comments_form.as_p}}
+                <button type="submit" value="send">Отправить Комментарий</button>
+            </form>
+            {%endif%}
+            {%for comment in comments%}
+            <section class="comments_box">
+                <div class="comment_box">
+                    <div class="game_info_user">
+                        <img src="{{comment.user.profile.avatar.url}}" alt="" class="game_avatar">
+                        <h3 class="comment_user">{{comment.user}}</h3>
+                    </div>
+                    <p class="comment_text">{{comment.text}}</p>
+                </div>
+            </section>
+            {%endfor%}
+        </section>
+    </footer>
+    <script src="{% static 'gameapp/script.js' %}"></script>
+</body>
+</html>

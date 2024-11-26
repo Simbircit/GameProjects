@@ -1,0 +1,342 @@
+body{
+    margin: 0;
+    background-color: #303030;
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+}
+header{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #222222;
+    height: 70px;
+    border-bottom: 1px solid white;
+}
+.header_box{
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.header_box_logo{
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.header_box_leaks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+}
+.logo{
+    height: 50px;
+    width: 30px;
+}
+.avatar{
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.header_text{
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+}
+.header_leaks{
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.main_text{
+    color :white;
+}
+.form_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button{
+    height: 30px;
+    width: 320px;
+    background-color: #00FFC3;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search{
+    margin: 50px;
+    height: 30px;
+    width: 720px;
+    background-color: rgba(0, 255, 195, 0.07);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+}
+.games_section{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.games{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.game{
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+}
+.game_avatar_text_box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    justify-content: space-between;
+}
+.game_avatar
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.game_text_box{
+    width: 230px;
+    height: 100px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.game_author{
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 5px;
+}
+.game_name{
+    text-decoration: none;
+    font-size: 20px;
+    color: #00FFC3;
+    line-height: 5px;
+}
+.game_image{
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+}
+.filters{
+    flex-grow: 1;
+    height: calc(100vh - 70px);
+    width: 360px;
+    background-color: #313131;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #00FFC3;
+    border-left: 1px solid white;
+}
+.filters2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #00FFC3;
+}
+.filter_text{
+    margin-top: 5px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+span{
+    color: #00FFC3;
+}
+.form_section{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+form{
+   margin-top: 50px;
+}
+p{
+   color: white;
+}
+input{
+   width: 200px;
+   border: 1px solid #00FFC3;
+   border-radius: 5px;
+   font-size: 14px;
+}
+li{
+   color: white;
+   display: hidden;
+}
+.button_box{
+   margin: 20px;
+}
+div{
+   color: white;
+}
+legend{
+   color: #00FFC3;
+}
+.profile_boxes{
+   margin-top: 50px;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+}
+.profile_box{
+   color: white;
+   margin-left: 25px;
+   margin-right: 25px;
+}
+.profile_img{
+   width: 300px;
+   height: 300px;
+}
+.prev-button{
+  background-color: white;
+  height: 400px;
+  width: 95px;
+  border-radius: 30px 0px 0px 30px;
+}
+.next-button{
+  background-color: white;
+  height: 400px;
+  width: 95px;
+  border-radius: 0px 30px 30px 0px;
+}
+.slider_box{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.slider{
+   display: flex;
+   overflow: hidden;
+   width: 800px;
+   height: 400px;
+}
+.slider_img{
+   position: relative;
+   width: 800px;
+   height: 400px;
+}
+.slider_img2{
+   width: 800px;
+   height: 400px;
+}
+footer{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #222222;
+  border-top: 1px solid white;
+}
+.arrow_left{
+  width: 80px;
+  height: 90px;
+}
+.arrow_right{
+  width: 80px;
+  height: 90px;
+  transform: rotate(-180deg);
+}
+.delete{
+  width:50px;
+  height: 50px;
+  position: absolute; /* Абсолютное позиционирование */
+  right: 0; top: 0; /* Положение элемента */
+}
+.game_info_box{
+  width: 890px;
+  display: flex;
+  flex-direction: column;
+}
+.game_info_user{
+  display: flex;
+  flex-direction: row;
+}
+.game_user_name{
+  color: white;
+  margin-left:20px;
+  font-size: 36px;
+}
+.game_description{
+  color: white;
+  font-size: 28px;
+}
+textarea{
+  width: 450px;
+  height: 30px;
+}
+.comment_form{
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment_user{
+  margin-left: 20px;
+  color: white;
+  font-size: 24px;
+}
+.comment_text{
+  margin-left: 80px;
+  color: white;
+  font-size: 20px;
+}
+.comments_box{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.file_text{
+  text-decoration: none;
+  color: white;
+  font-size: 28px;
+  margin: 10px;
+}
+.file_icon{
+  width:50px;
+  height: 50px;
+}
+.file_box{
+  margin: 20px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

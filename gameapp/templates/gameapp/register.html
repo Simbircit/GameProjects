@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gameapp/style.css' %}">
+    <title>GameProjects</title>
+</head>
+<body>
+    <header>
+        <a href="/" class="header_text">
+            <div class="header_box_logo">
+                <img src="{%static 'gameapp/images/logog.png'%}" alt="" class="logo">
+                <h1 class='header_text'>Game<span>Projects</span></h1>
+            </div>
+        </a>
+        {% if user.is_authenticated %}
+        <div class="header_box">
+            <a class="header_leaks" href="{%url 'add_game'%}">ADD GAME</a>
+            <a class="header_box_leaks" href="{%url 'profile'%}">
+                <h2 class="header_leaks">{{ user.username }}</h2>
+                <img src="{{ user.profile.avatar.url }}" alt="" class="avatar">
+            </a>
+            <a class="header_leaks" href="{%url 'logout'%}">EXIT</a>
+        </div>
+        {%else%}
+        <div class="header_box">
+            <a class="header_leaks" href="{%url 'login'%}">Войти</a>
+            <a class="header_leaks" href="{%url 'register'%}">Зарегистрироваться</a>
+        </div>
+        {%endif%}
+    </header>
+    <main class="form_section">
+        <section class="form_section">
+            <form method="post">
+                {% csrf_token%}
+                {{ form.as_p}}
+                <button type="submit" value="send">Register</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
